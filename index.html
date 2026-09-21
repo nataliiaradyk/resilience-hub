@@ -30,7 +30,7 @@
         header {
             background: linear-gradient(135deg, #2c3e50, #3498db);
             color: white;
-            padding: 50px 20px;
+            padding: 40px 20px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
@@ -42,7 +42,7 @@
 
         header p {
             font-size: 1.1rem;
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         nav {
@@ -55,6 +55,7 @@
             gap: 20px;
             padding: 12px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -108,47 +109,74 @@
             transform: translateY(-1px);
         }
 
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--secondary-color);
-            color: var(--secondary-color);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--secondary-color);
-            color: white;
-        }
-
-        /* Модулі */
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .module-card {
-            border: 1px solid #e0e0e0;
+        /* Інтерактивні Модулі Акордеон */
+        .accordion-item {
+            border: 1px solid #dcdfe6;
             border-radius: 8px;
-            padding: 20px;
-            background-color: #fafafa;
-            transition: transform 0.2s;
+            margin-bottom: 15px;
+            overflow: hidden;
+            background: #fff;
         }
 
-        .module-card:hover {
-            transform: translateY(-3px);
+        .accordion-header {
+            width: 100%;
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+            padding: 18px 20px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
         }
 
-        .module-card h4 {
+        .accordion-header:hover {
+            background-color: #eef2f5;
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.5rem;
             color: var(--accent-color);
-            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .accordion-header.active::after {
+            content: '−';
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #ffffff;
+            padding: 0 20px;
+        }
+
+        .session-block {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f9fbfd;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .session-title {
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 5px;
         }
 
         /* Тестування */
         .quiz-option {
             display: block;
             margin: 10px 0;
-            padding: 10px 15px;
+            padding: 12px 15px;
             background: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 6px;
@@ -159,9 +187,18 @@
             background: #e2e6ea;
         }
 
+        ul {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             color: #7f8c8d;
             font-size: 0.9rem;
             margin-top: 40px;
@@ -187,32 +224,90 @@
     <!-- Про програму -->
     <section id="about" class="section-card">
         <h2 class="section-title">Про програму</h2>
-        <p>Авторська психолого-розвивальна програма <strong>«Активізація внутрішніх ресурсів та резильєнтності»</strong> розроблена для підтримки та віднови особистісного потенціалу в умовах складних життєвих обставин.</p>
+        
+        <p><strong>Мета програми:</strong> актуалізація та розширення внутрішнього суб'єктного ресурсу, формування навичок емоційної саморегуляції, розвиток адаптивних копінг-стратегій та резильєнтності в умовах пролонгованого екстремального стресу.</p>
+        
         <br>
-        <p><strong>Методологічна основа:</strong> синтез когнітивно-поведінкової терапії, ресурсо-орієнтованого підходу Олени Штепи, багатовимірної моделі адаптації BASIC Ph та концепції посттравматичного зростання.</p>
+        <p><strong>Завдання програми:</strong></p>
+
+        <ul>
+            <li>Опанування психофізіологічними та когнітивно-поведінковими техніками зниження емоційної нестабільності та тривожності.</li>
+            <li>Ідентифікація, систематизація та інструменталізація власного внутрішнього потенціалу за методикою психологічної ресурсності.</li>
+            <li>Опанування технік когнітивного рефреймінгу та конструктивного планування в умовах високої неозначеності.</li>
+            <li>Відновлення емпатичної взаємодії, соціальної довіри та формування мереж взаємопідтримки.</li>
+        </ul>
     </section>
 
     <!-- Змістові модулі -->
     <section id="modules" class="section-card">
-        <h2 class="section-title">Змістові модулі програми</h2>
-        <div class="modules-grid">
-            <div class="module-card">
-                <h4>Модуль 1</h4>
-                <p><strong>Емоційна стабілізація:</strong> соматичні техніки заземлення, дихальні вправи та психоосвіта щодо реакцій на стрес.</p>
-            </div>
-            <div class="module-card">
-                <h4>Модуль 2</h4>
-                <p><strong>Суб'єктна ресурсність:</strong> актуалізація внутрішніх опор за методикою О. Штепи, саморефлексія та інвентаризація ресурсів.</p>
-            </div>
-            <div class="module-card">
-                <h4>Модуль 3</h4>
-                <p><strong>Когнітивна гнучкість:</strong> когнітивний рефреймінг, опрацювання катастрофічних думок та розвиток резильєнтності.</p>
-            </div>
-            <div class="module-card">
-                <h4>Модуль 4</h4>
-                <p><strong>Посттравматичне зростання:</strong> інтеграція досвіду, формування стратегій відновлення та підтримка соціальної взаємодії.</p>
+        <h2 class="section-title">Змістові модулі програми (натисніть для проходження)</h2>
+        <p style="margin-bottom: 15px; color: #666;">Натисніть на назву модуля, щоб відкрити його структуру, сесії та практичні вправи:</p>
+
+        <!-- Модуль 1 -->
+        <div class="accordion-item">
+            <button class="accordion-header">Модуль 1. Емоційна стабілізація та соматична заземленість (4 години)</button>
+            <div class="accordion-content">
+                <div class="session-block">
+                    <div class="session-title">Сесія 1.1. Фізіологія стресу та повернення в тіло</div>
+                    <p>Психопросвіта щодо впливу пролонгованого дистресу на нервову систему.</p>
+                    <p><strong>Практична вправа:</strong> «Соматичний якір» (навчання техніці дихання за квадратом 4-4-4-4 у поєднанні з прогресивною м'язовою релаксацією за Якобсоном).</p>
+                </div>
+                <div class="session-block">
+                    <div class="session-title">Сесія 1.2. Картографія емоційних тригерів та сенсорне заземлення</div>
+                    <p><strong>Практична вправа:</strong> «Мультисенсорний фокус 5-4-3-2-1» (переключення уваги на зовнішні сенсорні канали).</p>
+                    <p><strong>Вправа:</strong> «Карта безпечного простору» (візуалізація особистого емоційного укриття).</p>
+                </div>
             </div>
         </div>
+
+        <!-- Модуль 2 -->
+        <div class="accordion-item">
+            <button class="accordion-header">Модуль 2. Актуалізація внутрішнього суб'єктного ресурсу (4 години)</button>
+            <div class="accordion-content">
+                <div class="session-block">
+                    <div class="session-title">Сесія 2.1. Діагностика та ревізія особистісного потенціалу</div>
+                    <p>Опора на власні сили як базова детермінанта резильєнтності.</p>
+                    <p><strong>Арттерапевтична вправа:</strong> «Дерево моїх ресурсів» (графічне моделювання власного життєвого досвіду, сильних сторін та потенціалу).</p>
+                </div>
+                <div class="session-block">
+                    <div class="session-title">Сесія 2.2. Інструменталізація моделі BASIC Ph</div>
+                    <p><strong>Практична вправа:</strong> «Шестиканальний профіль відновлення» (оцінка ресурсів за 6 каналами адаптації).</p>
+                    <p>Розробка індивідуальної скриньки ресурсної самодопомоги.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Модуль 3 -->
+        <div class="accordion-item">
+            <button class="accordion-header">Модуль 3. Трансформація кризи та розвиток резильєнтності (4 години)</button>
+            <div class="accordion-content">
+                <div class="session-block">
+                    <div class="session-title">Сесія 3.1. Когнітивний рефреймінґ та подолання безпорадності</div>
+                    <p><strong>Техніка КПТ:</strong> Техніка когнітивно-поведінкової терапії для роботи з автоматичними думками «Переформулювання контексту».</p>
+                </div>
+                <div class="session-block">
+                    <div class="session-title">Сесія 3.2. Проєктування майбутнього в умовах неозначеності</div>
+                    <p><strong>Практична вправа:</strong> «Метод мікрокроків» (декомпозиція великих життєвих цілей на конкретні щоденні дії).</p>
+                    <p>Побудова картки короткострокових досягнень.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Модуль 4 -->
+        <div class="accordion-item">
+            <button class="accordion-header">Модуль 4. Соціальна інтеграція та мережування (4 години)</button>
+            <div class="accordion-content">
+                <div class="session-block">
+                    <div class="session-title">Сесія 4.1. Відновлення соціальної довіри та ненасильницьке спілкування</div>
+                    <p><strong>Практична вправа:</strong> «Діалог емпатії» (відпрацювання навичок активного слухання та висловлювання власних потреб через Я-повідомлення).</p>
+                </div>
+                <div class="session-block">
+                    <div class="session-title">Сесія 4.2. Конструювання мережі взаємопідтримки</div>
+                    <p><strong>Вправа:</strong> «Павутиння ресурсного обміну» (побудова картографії взаємодопомоги та обміну ресурсами).</p>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <!-- Вхідне опитування / Пре-тест -->
@@ -244,7 +339,7 @@
            rel="noopener noreferrer" 
            class="btn" 
            style="background-color: #2980b9; font-size: 1.05rem;">
-            Пройти підсумкове опитування (Google Forms) &rarr;
+            Прайті підсумкове опитування (Google Forms) &rarr;
         </a>
     </section>
 
@@ -255,6 +350,25 @@
 </footer>
 
 <script>
+    // Скрипт відкриття/закриття модулів
+    const acc = document.getElementsByClassName("accordion-header");
+    for (let i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            const panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+                panel.style.paddingTop = "0";
+                panel.style.paddingBottom = "0";
+            } else {
+                panel.style.paddingTop = "10px";
+                panel.style.paddingBottom = "15px";
+                panel.style.maxHeight = panel.scrollHeight + 30 + "px";
+            }
+        });
+    }
+
+    // Скрипт опитування
     function submitQuiz() {
         var options = document.getElementsByName('q1');
         var selected = false;
