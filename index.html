@@ -109,6 +109,14 @@
             transform: translateY(-1px);
         }
 
+        .btn-secondary {
+            background-color: #7f8c8d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #636e72;
+        }
+
         /* Акордеон */
         .accordion-item {
             border: 1px solid #dcdfe6;
@@ -204,6 +212,51 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
+        .audio-player-box {
+            background: #eef2f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .audio-player-box p {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .interactive-form {
+            background: #fdfefe;
+            border: 1px dashed #bdc3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+            margin: 8px 0;
+            resize: vertical;
+        }
+
+        .upload-box {
+            border: 2px dashed #3498db;
+            background: #ebf5fb;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
         .link-button {
             display: inline-block;
             margin: 10px 0;
@@ -228,7 +281,15 @@
             font-size: 0.95rem;
         }
 
-        /* Тестування */
+        /* Покрокове тестування */
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
         .quiz-option {
             display: block;
             margin: 10px 0;
@@ -241,6 +302,28 @@
 
         .quiz-option:hover {
             background: #e2e6ea;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            height: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--secondary-color);
+            width: 33%;
+            transition: width 0.3s ease;
+        }
+
+        .quiz-nav-btns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
         }
 
         ul, ol {
@@ -270,8 +353,9 @@
 
 <nav>
     <a href="#about">Про програму</a>
-    <a href="#modules">Змістові модулі</a>
-    <a href="#pre-test">Вхідний зріз</a>
+    <a href="#consent">Інформована згода</a>
+    <a href="#pre-test">Первинна оцінка</a>
+    <a href="#modules">Навчально-практичні кабінети</a>
     <a href="#post-test">Підсумкове опитування</a>
 </nav>
 
@@ -294,10 +378,83 @@
         </ul>
     </section>
 
-    <!-- Змістові модулі -->
+    <!-- Вітальне слово та Інформована згода -->
+    <section id="consent" class="section-card">
+        <h2 class="section-title">Вітальне слово та Інформована згода</h2>
+        <p>Вітаємо вас у просторі <strong>Resilience Hub</strong>! Ця онлайн-платформа створена для того, щоб допомогти вам дослідити власні емоційні стани, знайти приховані внутрішні опори та опанувати дієві інструменти саморегуляції.</p>
+        <br>
+        <p>Усі матеріали розроблені на основі засад когнітивно-поведінкової терапії, арттерапії та сучасних протоколів роботи з кризовими станами.</p>
+        
+        <div style="background: #f8f9fa; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin-top: 15px;">
+            <p><strong>Форма інформованої згоди:</strong></p>
+            <p style="font-size: 0.95rem; color: #555; margin-top: 5px;">
+                Беручи участь у цій програмі, ви підтверджуєте, що розумієте: дані опитувань використовуються виключно в анонімізованій формі для моніторингу вашого особистого прогресу. Ви можете проходити вправи у власному темпі. За потреби ви завжди можете звернутися до кваліфікованого спеціаліста.
+            </p>
+            <label style="display: block; margin-top: 15px; font-weight: 600; cursor: pointer;">
+                <input type="checkbox" id="consent-check" onchange="toggleAccess()"> Я ознайомлений(а) з умовами та даю згоду на участь у програмі
+            </label>
+        </div>
+    </section>
+
+    <!-- Первинна оцінка (Пре-тест з пагінацією) -->
+    <section id="pre-test" class="section-card">
+        <h2 class="section-title">Оцінка емоційного стану (Пре-тест)</h2>
+        <p style="margin-bottom: 15px;">Будь ласка, дайте відповідь на декілька запитань для фіксації вашого вихідного стану:</p>
+        
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="quiz-progress"></div>
+        </div>
+
+        <form id="quiz-form">
+            <!-- Крок 1 -->
+            <div class="quiz-step active" id="step-1">
+                <p><strong>Запитання 1 з 3:</strong> Як ви оцінюєте вашу здатність відновлюватися після стресових подій?</p>
+                <label class="quiz-option"><input type="radio" name="q1" value="1"> Важко відновлююся, відчуваю тривалий занепад сил</label>
+                <label class="quiz-option"><input type="radio" name="q1" value="2"> Потребую значного часу та зовнішньої підтримки</label>
+                <label class="quiz-option"><input type="radio" name="q1" value="3"> Достатньо швидко знаходжу внутрішні ресурси та адаптуюся</label>
+                
+                <div class="quiz-nav-btns">
+                    <div></div> <!-- Пустий блок для вирівнювання -->
+                    <button type="button" class="btn" onclick="nextStep(2)">Далі &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Крок 2 -->
+            <div class="quiz-step" id="step-2">
+                <p><strong>Запитання 2 з 3:</strong> Наскільки чітко ви відчуваєте свої внутрішні ресурси та сильні сторони під час кризи?</p>
+                <label class="quiz-option"><input type="radio" name="q2" value="1"> Майже не відчуваю, здається, що ресурси вичерпані</label>
+                <label class="quiz-option"><input type="radio" name="q2" value="2"> Згадую про свої сильні сторони лише інколи</label>
+                <label class="quiz-option"><input type="radio" name="q2" value="3"> Чітко знаю свої опори та вмію ними користуватися</label>
+                
+                <div class="quiz-nav-btns">
+                    <button type="button" class="btn btn-secondary" onclick="nextStep(1)">&larr; Назад</button>
+                    <button type="button" class="btn" onclick="nextStep(3)">Далі &rarr;</button>
+                </div>
+            </div>
+
+            <!-- Крок 3 -->
+            <div class="quiz-step" id="step-3">
+                <p><strong>Запитання 3 з 3:</strong> Чи маєте ви у своєму розпорядженні дієві техніки швидкого заспокоєння при тривозі?</p>
+                <label class="quiz-option"><input type="radio" name="q3" value="1"> Ні, тривога зазвичай повністю захоплює мене</label>
+                <label class="quiz-option"><input type="radio" name="q3" value="2"> Знаю деякі вправи, але рідко застосовую їх на практиці</label>
+                <label class="quiz-option"><input type="radio" name="q3" value="3"> Регулярно практикую дихальні або соматичні техніки</label>
+                
+                <div class="quiz-nav-btns">
+                    <button type="button" class="btn btn-secondary" onclick="nextStep(2)">&larr; Назад</button>
+                    <button type="button" class="btn" onclick="submitQuiz()">Завершити та зберегти</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="quiz-result" style="display: none; margin-top: 20px; padding: 15px; background: #e8f8f5; border-radius: 6px; color: #27ae60;">
+            <strong>Чудово!</strong> Ваші відповіді успішно збережено. Тепер ви можете розпочати роботу з навчально-практичними кабінетами модулів.
+        </div>
+    </section>
+
+    <!-- Змістові модулі (Навчально-практичні кабінети) -->
     <section id="modules" class="section-card">
-        <h2 class="section-title">Змістові модулі та практичний протокол</h2>
-        <p style="margin-bottom: 15px; color: #666;">Натисніть на назву модуля, щоб відкрити його матеріали та послідовно виконати терапевтичні вправи:</p>
+        <h2 class="section-title">Навчально-практичні кабінети (Модулі 1-4)</h2>
+        <p style="margin-bottom: 15px; color: #666;">Натисніть на назву модуля, щоб відкрити його матеріали, скористатися інтерактивними щоденниками та аудіогайдами:</p>
 
         <!-- Модуль 1 -->
         <div class="accordion-item">
@@ -308,6 +465,15 @@
                     <div class="session-title">Сесія 1.1. Фізіологія стресу та повернення в тіло</div>
                     <p><strong>Психопросвітній блок:</strong> Пролонгований дистрес перевантажує симпатичну нервову систему, викликаючи хронічну напругу та емоційне виснаження. Детальніше про механізми вигорання читайте за посиланням:</p>
                     <a href="https://www.samopomi.ch/psikhichne-zdorovja/stres-ta-emociine-vigorannja" target="_blank" class="link-button">Читати матеріали: Психічне здоров'я, стрес та емоційне вигорання (samopomi.ch) &rarr;</a>
+
+                    <!-- Аудіогайд для вправи -->
+                    <div class="audio-player-box">
+                        <p>🎧 Аудіосупровід: Гайд для виконання дихання «За квадратом» (3 хвилини)</p>
+                        <audio controls>
+                            <source src="audio-guide-placeholder.mp3" type="audio/mpeg">
+                            Ваш браузер не підтримує аудіоелемент.
+                        </audio>
+                    </div>
 
                     <div class="exercise-box">
                         <div class="exercise-title">Практичний протокол: Вправа «Соматичний якір» (Дихання 4-4-4-4 та прогресивна релаксація за Якобсоном)</div>
@@ -326,7 +492,7 @@
                             </li>
                             <li><strong>М'язова релаксація за Якобсоном:</strong>
                                 <ul>
-                                    <li> Стисніть кулаки та пальці ніг із силою 80% на 5-7 секунд, звертаючи увагу на напругу.</li>
+                                    <li>Стисніть кулаки та пальці ніг із силою 80% на 5-7 секунд, звертаючи увагу на напругу.</li>
                                     <li>Різко розтисніть і повністю розслабте їх на 10 секунд. Відчуйте хвилю тепла.</li>
                                     <li>Підніміть плечі до вух, напружте шию на 5-7 секунд. Потім різко опустіть і відчуйте розслаблення.</li>
                                 </ul>
@@ -348,10 +514,10 @@
 
                         <p style="margin-top: 10px;"><strong>Покроковий алгоритм:</strong></p>
                         <ul>
-                            <li><strong>5 предметів (Зір):</strong> Повільно озирніться. Назвіть уголос 5 конкретних речей довкола вас (наприклад: синя чашка, пляма на стіні, годинник, тінь від вазона, край ноутбука).</li>
-                            <li><strong>4 текстури (Дотик):</strong> Торкніться 4 різних поверхонь. Зверніть увагу на їхню текстуру (холодний стіл, шорсткі джинси, м'який плед, гладкий папір).</li>
-                            <li><strong>3 звуки (Слух):</strong> Прислухайтеся і виділіть 3 звуки (гудіння холодильника, шум авто за вікном, власне дихання).</li>
-                            <li><strong>2 запахи (Нюх):</strong> Відчуйте 2 запахи навколо (кава, свіже повітря) або вдихніть запах власного одягу.</li>
+                            <li><strong>5 предметів (Зір):</strong> Повільно озирніться. Назвіть уголос 5 конкретних речей довкола вас.</li>
+                            <li><strong>4 текстури (Дотик):</strong> Торкніться 4 різних поверхонь. Зверніть увагу на їхню текстуру.</li>
+                            <li><strong>3 звуки (Слух):</strong> Прислухайтеся і виділіть 3 звуки.</li>
+                            <li><strong>2 запахи (Нюх):</strong> Відчуйте 2 запахи навколо або вдихніть запах власного одягу.</li>
                             <li><strong>1 смак (Смак):</strong> Відчуйте смак у роті або зробіть один свідомий ковток води.</li>
                         </ul>
 
@@ -359,15 +525,13 @@
                             <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Сенсорне заземлення">
                         </div>
 
-                        <div class="reflection-block">
-                            <strong>Аналітична робота з тригерами:</strong> Запишіть у блокнот 2 ситуації за останній тиждень, які вибили вас із колії. Вкажіть, який саме сенсорний канал (зоровий, слуховий тощо) зреагував першим.
+                        <!-- Інтерактивний КПТ-щоденник -->
+                        <div class="interactive-form">
+                            <p><strong>📝 Інтерактивний щоденник тригерів:</strong></p>
+                            <label style="font-size: 0.9rem;">Опишіть ситуацію за тиждень, яка викликала тривогу, та сенсорний канал, який включився першим:</label>
+                            <textarea id="trigger-note" placeholder="Наприклад: Сильний шум за вікном (слух) викликал прискорене серцебиття..."></textarea>
+                            <button type="button" class="btn" style="padding: 6px 12px; font-size: 0.85rem;" onclick="saveNote('trigger-note')">Зберегти нотатку в пам'яті</button>
                         </div>
-                    </div>
-
-                    <div class="exercise-box">
-                        <div class="exercise-title">Практичний протокол: Вправа «Карта безпечного простору»</div>
-                        <p><strong>Мета:</strong> Створення внутрішнього психологічного укриття для стабілізації емоційного стану під час стресу.</p>
-                        <p><strong>Інструкція:</strong> Заплющте очі. Уявіть місце, де ви почуваєтеся у цілковитій безпеці (реальний куточок з дитинства, берег моря чи вигаданий простір). Запишіть у зошит 3 конкретні деталі: які там кольори, які звуки лунають та яке фізичне відчуття виникає в грудях, коли ви там перебуваєте.</p>
                     </div>
                 </div>
 
@@ -388,19 +552,23 @@
                         
                         <p style="margin-top: 10px;"><strong>Алгоритм малювання та аналізу:</strong></p>
                         <ol>
-                            <li>Візьміть аркуш А4 та кольорові олівці або ручку. Намалюйте велике дерево.</li>
-                            <li><strong>Коріння (Мої опори):</strong> Напишіть біля коріння 3-4 найважчі кризи у вашому житті, які ви вже успішно подолали, а також ваші базові цінності.</li>
-                            <li><strong>Стовбур (Мої сили):</strong> У стовбурі запишіть свої сильні риси характеру, навички та вміння (наприклад: витривалість, гумор, аналітичний розум, емпатія).</li>
-                            <li><strong>Гілки та листя (Мої ресурси та зв'язки):</strong> На гілках напишіть людей, які вас підтримують, ваші захоплення, мрії та джерела відновлення енергії.</li>
-                            <li><strong>Плоди (Мої здобутки):</strong> Позначте ваші конкретні успіхи та досягнення, якими ви пишаєтеся.</li>
+                            <li>Візьміть аркуш А4 та кольорові олівці. Намалюйте велике дерево.</li>
+                            <li><strong>Коріння (Мої опори):</strong> Напишіть 3-4 найважчі кризи, які ви вже подолали, та базові цінності.</li>
+                            <li><strong>Стовбур (Мої сили):</strong> Запишіть свої сильні риси характеру та навички.</li>
+                            <li><strong>Гілки (Мої ресурси):</strong> Напишіть людей, які вас підтримують, та ваші захоплення.</li>
+                            <li><strong>Плоди (Здобутки):</strong> Позначте ваші досягнення.</li>
                         </ol>
 
                         <div class="media-container">
                             <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" alt="Ресурсне дерево">
                         </div>
 
-                        <div class="reflection-block">
-                            <strong>Терапевтичне запитання:</strong> Подивіться на свій малюнок. Яка частина дерева зараз потребує найбільшої уваги чи "поливу"? Яку рису зі стовбура ви можете використати вже сьогодні?
+                        <!-- Шаблон завантаження малюнка -->
+                        <div class="upload-box">
+                            <p>🎨 <strong>Завантаження арттерапевтичної роботи:</strong></p>
+                            <p style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">Сфотографуйте ваше намальоване «Дерево ресурсів» та прикріпіть файл сюди для збереження у вашому особистому альманасі:</p>
+                            <input type="file" accept="image/*" style="display: block; margin: 0 auto 10px auto;">
+                            <button type="button" class="btn" style="padding: 6px 12px; font-size: 0.85rem;" onclick="alert('Малюнок успішно прикріплено!')">Прикріпити малюнок</button>
                         </div>
                     </div>
                 </div>
@@ -410,20 +578,14 @@
 
                     <div class="exercise-box">
                         <div class="exercise-title">Практичний протокол: «Шестиканальний профіль відновлення BASIC Ph»</div>
-                        <p><strong>Мета:</strong> Визначення індивідуальної комбінації каналів адаптації та подолання стресу за методикою проф. Мулі Лаада.</p>
+                        <p><strong>Мета:</strong> Визначення індивідуальної комбінації каналів подолання стресу за методикою проф. Мулі Лаада.</p>
                         
-                        <p style="margin-top: 10px;"><strong>Оцінка та аналіз 6 каналів:</strong> Оцініть від 1 до 5, наскільки часто ви звертаєтеся до кожного каналу під час кризи:</p>
-                        <ul>
-                            <li><strong>B (Belief - Віра):</strong> Релігія, філософія, віра в себе, ідеологія, шукання сенсів.</li>
-                            <li><strong>A (Affect - Почуття):</strong> Вираження емоцій, плач, сміх, ведення щоденника, розмови про почуття.</li>
-                            <li><strong>S (Social - Соціальний):</strong> Спілкування з друзями, приналежність до групи, допомога іншим.</li>
-                            <li><strong>I (Imagination - Уява):</strong> Творчість, мрії, спостереження за мистецтвом, гумор, фантазія.</li>
-                            <li><strong>C (Cognition - Когніція):</strong> Збір фактів, аналіз ситуації, плани, логіка, читання інструкцій.</li>
-                            <li><strong>Ph (Physiology - Фізіологія):</strong> Спорт, прогулянки, масаж, смачна їжа, сон, фізична праця.</li>
-                        </ul>
+                        <p style="margin-top: 10px;"><strong>Канали відновлення:</strong> B (Віра), A (Почуття), S (Соціальний), I (Уява), C (Когніція), Ph (Фізіологія).</p>
 
-                        <div class="reflection-block">
-                            <strong>Практична розробка:</strong> Визначте 2 ваші найсильніші канали. Складіть свою «Скриньку ресурсної самодопомоги», записавши конкретні 3 дії для кожного з двох провідних каналів (наприклад: для C - скласти план на день; для Ph - контрасний душ).
+                        <div class="interactive-form">
+                            <p><strong>🧰 Ваша скринька ресурсів:</strong></p>
+                            <textarea id="basic-note" placeholder="Запишіть 3 конкретні дії для ваших 2 провідних каналів (наприклад: 1. Контрастний душ; 2. План дій на завтра)..."></textarea>
+                            <button type="button" class="btn" style="padding: 6px 12px; font-size: 0.85rem;" onclick="saveNote('basic-note')">Зберегти скриньку</button>
                         </div>
                     </div>
                 </div>
@@ -440,55 +602,22 @@
                     <div class="session-title">Сесія 3.1. Когнітивний рефреймінґ та подолання безпорадності</div>
 
                     <div class="exercise-box">
-                        <div class="exercise-title">КПТ Протокол: Техніка «Переформулювання контексту»</div>
-                        <p><strong>Мета:</strong> Трансформація автоматичних тривожних думок та катастрофізації у когнітивно обґрунтовану позицію.</p>
-                        
-                        <p style="margin-top: 10px;"><strong>Заповніть аналітичну таблицю у зошиті:</strong></p>
-                        
-                        <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
-                            <thead>
-                                <tr style="background-color: #f2f2f2;">
-                                    <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Крок 1. Автоматична думка</th>
-                                    <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Крок 2. Перевірка фактами</th>
-                                    <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Крок 3. Адаптивний рефреймінг</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 10px;">«Я ні з чим не справляюся, все рушиться»</td>
-                                    <td style="border: 1px solid #ddd; padding: 10px;">Чи дійсно НІ З ЧИМ? Докази проти: я сьогодні зробив(ла) робочі завдання, вирішив(ла) побутові питання.</td>
-                                    <td style="border: 1px solid #ddd; padding: 10px;">«Мені зараз важко і я втомлений(а), але я успішно вирішую конкретні щоденні завдання по мірі їх надходження»</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 10px;">«Майбутнє повністю невизначене і страшне»</td>
-                                    <td style="border: 1px solid #ddd; padding: 10px;">Я не можу передбачити все, але маю досвід вирішення проблем у минулому.</td>
-                                    <td style="border: 1px solid #ddd; padding: 10px;">«Я не можу контролювати все майбутнє, але я маю план на сьогодні і на завтра»</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="exercise-title">КПТ Протокол: Інтерактивний Щоденник Думок</div>
+                        <p><strong>Мета:</strong> Трансформація автоматичних тривожних думок у когнітивно обґрунтовану позицію.</p>
 
-                        <div class="reflection-block">
-                            <strong>Самостійне завдання:</strong> Запишіть одну власну тривожну думку, яка турбує вас останні дні, та опрацюйте її за трьома кроками таблиці.
-                        </div>
-                    </div>
-                </div>
+                        <div class="interactive-form" style="background: #ffffff; border: 1px solid #ced6e0;">
+                            <p><strong>✍️ Заповніть форму рефреймінгу:</strong></p>
+                            
+                            <label style="font-size: 0.85rem; font-weight: bold;">1. Автоматична тривожна думка:</label>
+                            <textarea id="cbt-1" placeholder="Наприклад: Я ні з чим не справляюся..."></textarea>
 
-                <div class="session-block">
-                    <div class="session-title">Сесія 3.2. Проєктування майбутнього в умовах неозначеності</div>
+                            <label style="font-size: 0.85rem; font-weight: bold;">2. Докази ПРОТИ цієї думки (факти):</label>
+                            <textarea id="cbt-2" placeholder="Наприклад: Але сьогодні я зробив(ла) розклад і вирішив(ла) 2 питання..."></textarea>
 
-                    <div class="exercise-box">
-                        <div class="exercise-title">Практичний протокол: «Метод мікрокроків та Картка короткострокових досягнень»</div>
-                        <p><strong>Мета:</strong> Подолання стану синдрому відкладеного життя та синдрому набутої безпорадності через дрібнодисперсне планування.</p>
-                        
-                        <p style="margin-top: 10px;"><strong>Алгоритм виконання:</strong></p>
-                        <ol>
-                            <li><strong>Оберіть масштабну ціль</strong>, яка викликає страх або відчуття блокування.</li>
-                            <li><strong>Декомпозиція:</strong> Розбийте цю ціль на 4 найдрібніші дії, виконання кожної з яких займає не більше 10-15 хвилин.</li>
-                            <li><strong>Фіксація досягнень:</strong> Заведіть картку досягнень і щовечора записуйте ровно 3 виконані мікрокроки за день.</li>
-                        </ol>
+                            <label style="font-size: 0.85rem; font-weight: bold;">3. Адаптивна підтримка (переформульована думка):</label>
+                            <textarea id="cbt-3" placeholder="Наприклад: Мені важко, але я поступово вирішую питання..."></textarea>
 
-                        <div class="reflection-block">
-                            <strong>Приклад:</strong> Замість «Повністю відновити ментальне здоров'я» мікрокрок 1 буде: «Зробити вправу на дихання протягом 3 хвилин під час перерви».
+                            <button type="button" class="btn" style="padding: 8px 16px; margin-top: 5px;" onclick="saveCBT()">Зберегти запис у КПТ-щоденник</button>
                         </div>
                     </div>
                 </div>
@@ -505,40 +634,13 @@
                     <div class="session-title">Сесія 4.1. Відновлення соціальної довіри та ненасильницьке спілкування</div>
 
                     <div class="exercise-box">
-                        <div class="exercise-title">Практичний протокол: Вправа «Діалог емпатії (Алгоритм Я-повідомлення)»</div>
-                        <p><strong>Мета:</strong> Зниження рівня конфліктності та висловлення власних потреб без обвинувачення співрозмовника.</p>
-                        
-                        <p style="margin-top: 10px;"><strong>Конструкція з 4 елементів:</strong></p>
-                        <ol>
-                            <li><strong>Факти без оцінки:</strong> «Коли ти [конкретна дія без слів "завжди", "ніколи"]...»</li>
-                            <li><strong>Власні почуття:</strong> «...я відчуваю [тривогу / роздратування / самотність]...»</li>
-                            <li><strong>Власна потреба:</strong> «...тому що для мене важлива [повага / передбачуваність / підтримка]...»</li>
-                            <li><strong>Конкретне прохання:</strong> «...будь ласка, [конкретна дія у позитивному формулюванні]».</li>
-                        </ol>
+                        <div class="exercise-title">Практичний протокол: «Діалог емпатії (Алгоритм Я-повідомлення)»</div>
+                        <p><strong>Конструкція з 4 елементів:</strong> Факти без оцінки &rarr; Власні почуття &rarr; Потреба &rarr; Прохання.</p>
 
-                        <div class="reflection-block">
-                            <strong>Практична вправа:</strong> Переформулюйте претензію «Ти ніколи мене не слухаєш!» у конструктивне Я-повідомлення за шаблоном.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="session-block">
-                    <div class="session-title">Сесія 4.2. Конструювання мережі взаємопідтримки</div>
-
-                    <div class="exercise-box">
-                        <div class="exercise-title">Практичний протокол: Вправа «Павутиння ресурсного обміну»</div>
-                        <p><strong>Мета:</strong> Картографування соціального капіталу та виявлення прихованих мереж підтримки.</p>
-                        
-                        <p style="margin-top: 10px;"><strong>Схема побудови:</strong></p>
-                        <p>На аркуші паперу намалюйте коло із власним ім'ям у центрі. Наколо зобразіть 3 орбіти:</p>
-                        <ul>
-                            <li><strong>Близька орбіта (Близькі люди):</strong> Кому ви можете зателефонувати у разі гострої потреби навіть вночі?</li>
-                            <li><strong>Середня орбіта (Колеги, знайомі, фахівці):</strong> Хто може допомогти експертно, інформаційно чи побутово?</li>
-                            <li><strong>Зовнішня орбіта (Спільноти, волонтерські групи):</strong> До яких організацій чи груп за інтересами ви належите?</li>
-                        </ul>
-
-                        <div class="reflection-block">
-                            <strong>Аналіз обміну:</strong> Проведіть від себе стрілочки. Подивіться, де є баланс «віддаю - отримую», а де є дефіцит. Напишіть ім'я однієї людини, з якою ви відновите контакт цього тижня.
+                        <div class="interactive-form">
+                            <p><strong>💬 Тренажер Я-повідомлень:</strong></p>
+                            <textarea id="message-note" placeholder="Переформулюйте претензію у Я-повідомлення за шаблоном..."></textarea>
+                            <button type="button" class="btn" style="padding: 6px 12px; font-size: 0.85rem;" onclick="saveNote('message-note')">Зберегти чернетку</button>
                         </div>
                     </div>
                 </div>
@@ -548,27 +650,10 @@
 
     </section>
 
-    <!-- Вхідне опитування / Пре-тест -->
-    <section id="pre-test" class="section-card">
-        <h2 class="section-title">1. Вхідний психодіагностичний зріз</h2>
-        <p>Пройдіть первинне експрес-опитування для оцінки вихідного рівня психологічної стійкості перед початком роботи з модулями:</p>
-        
-        <div id="quiz-container" style="margin-top: 20px;">
-            <p><strong>Запитання 1 з 3:</strong> Як ви оцінюєте вашу здатність відновлюватися після стресових подій?</p>
-            <label class="quiz-option"><input type="radio" name="q1" value="1"> Важко відновлююся, відчуваю тривалий занепад сил</label>
-            <label class="quiz-option"><input type="radio" name="q1" value="2"> Потребую значного часу та зовнішньої підтримки</label>
-            <label class="quiz-option"><input type="radio" name="q1" value="3"> Достатньо швидко знаходжу внутрішні ресурси та адаптуюся</label>
-            <button class="btn" onclick="submitQuiz()" style="margin-top: 15px;">Зберегти відповідь</button>
-        </div>
-        <div id="quiz-result" style="display: none; margin-top: 20px; padding: 15px; background: #e8f8f5; border-radius: 6px; color: #27ae60;">
-            <strong>Дякуємо!</strong> Вхідні дані збережено. Тепер ви можете перейти до опрацювання змістових модулів.
-        </div>
-    </section>
-
     <!-- Підсумкове опитування / Пост-тест -->
     <section id="post-test" class="section-card" style="background: #eaf2f8; border: 1px solid #aed6f1;">
-        <h2 class="section-title" style="color: #1b4f72;">2. Підсумковий психодіагностичний моніторинг</h2>
-        <p>Після завершення проходження модулів програми обов'язковим етапом є проходження повторного опитування для фіксації динаміки та оцінки ефективності програми.</p>
+        <h2 class="section-title" style="color: #1b4f72;">Підсумковий моніторинг (Пост-тест)</h2>
+        <p>Після завершення проходження модулів програми обов'язковим етапом є проходження повторного опитування для фіксації вашої динаміки та оцінки ефективності роботи.</p>
         <br>
         <p>Будь ласка, перейдіть за посиланням нижче та заповніть фінальну форму:</p>
         <br>
@@ -601,26 +686,59 @@
             } else {
                 panel.style.paddingTop = "10px";
                 panel.style.paddingBottom = "20px";
-                panel.style.maxHeight = panel.scrollHeight + 1200 + "px";
+                panel.style.maxHeight = panel.scrollHeight + 1500 + "px";
             }
         });
     }
 
-    // Скрипт тестів
+    // Скрипт пагінації тесту (Пре-тест)
+    function nextStep(stepNumber) {
+        document.querySelectorAll('.quiz-step').forEach(step => {
+            step.classList.remove('active');
+        });
+        document.getElementById('step-' + stepNumber).classList.add('active');
+        
+        // Оновлення прогрес-бару
+        const progress = (stepNumber / 3) * 100;
+        document.getElementById('quiz-progress').style.width = progress + '%';
+    }
+
     function submitQuiz() {
-        var options = document.getElementsByName('q1');
-        var selected = false;
-        for (var i = 0; i < options.length; i++) {
-            if (options[i].checked) {
-                selected = true;
-                break;
-            }
+        document.getElementById('quiz-form').style.display = 'none';
+        document.getElementById('quiz-result').style.display = 'block';
+    }
+
+    // Збереження нотаток у браузері (LocalStorage)
+    function saveNote(elementId) {
+        const text = document.getElementById(elementId).value;
+        if(text.trim() === "") {
+            alert("Будь ласка, напишіть текст перед збереженням.");
+            return;
         }
-        if (selected) {
-            document.getElementById('quiz-container').style.display = 'none';
-            document.getElementById('quiz-result').style.display = 'block';
-        } else {
-            alert('Будь ласка, оберіть варіант відповіді!');
+        localStorage.setItem(elementId, text);
+        alert("Запис успішно збережено у вашому браузері!");
+    }
+
+    function saveCBT() {
+        const cbt1 = document.getElementById('cbt-1').value;
+        const cbt2 = document.getElementById('cbt-2').value;
+        const cbt3 = document.getElementById('cbt-3').value;
+        
+        if(!cbt1 || !cbt2 || !cbt3) {
+            alert("Будь ласка, заповніть усі три поля КПТ-щоденника.");
+            return;
+        }
+        
+        const cbtData = { cbt1, cbt2, cbt3, date: new Date().toLocaleDateString() };
+        localStorage.setItem('cbt_entry', JSON.stringify(cbtData));
+        alert("Запис у КПТ-щоденник успішно збережено!");
+    }
+
+    // Перевірка інформованої згоди
+    function toggleAccess() {
+        const checkBox = document.getElementById("consent-check");
+        if(checkBox.checked) {
+            alert("Дякуємо за підтвердження! Всі кабінети програми доступні.");
         }
     }
 </script>
