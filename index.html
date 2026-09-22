@@ -109,7 +109,7 @@
             transform: translateY(-1px);
         }
 
-        /* Інтерактивні Модулі Акордеон */
+        /* Акордеон */
         .accordion-item {
             border: 1px solid #dcdfe6;
             border-radius: 8px;
@@ -158,18 +158,70 @@
             padding: 0 20px;
         }
 
+        /* Сесії та Практика */
         .session-block {
-            margin: 15px 0;
-            padding: 15px;
+            margin: 20px 0;
+            padding: 20px;
             background: #f9fbfd;
             border-left: 4px solid var(--accent-color);
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         .session-title {
             font-weight: 700;
+            font-size: 1.1rem;
             color: var(--accent-color);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .exercise-box {
+            background: #ffffff;
+            border: 1px dashed #b0c4de;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .exercise-title {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .media-container {
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .media-container iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .media-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .link-button {
+            display: inline-block;
+            margin: 8px 0;
+            padding: 8px 16px;
+            background-color: #ebf5fb;
+            color: #2980b9;
+            border: 1px solid #aed6f1;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .link-button:hover {
+            background-color: #d4e6f1;
         }
 
         /* Тестування */
@@ -187,13 +239,13 @@
             background: #e2e6ea;
         }
 
-        ul {
+        ul, ol {
             margin-left: 20px;
             margin-bottom: 10px;
         }
 
         li {
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         footer {
@@ -240,23 +292,60 @@
 
     <!-- Змістові модулі -->
     <section id="modules" class="section-card">
-        <h2 class="section-title">Змістові модулі програми (натисніть для проходження)</h2>
-        <p style="margin-bottom: 15px; color: #666;">Натисніть на назву модуля, щоб відкрити його структуру, сесії та практичні вправи:</p>
+        <h2 class="section-title">Змістові модулі та практичні матеріали</h2>
+        <p style="margin-bottom: 15px; color: #666;">Натисніть на назву модуля, щоб відкрити його матеріали, переглянути наочні посібники та виконати практичні вправи:</p>
 
         <!-- Модуль 1 -->
         <div class="accordion-item">
             <button class="accordion-header">Модуль 1. Емоційна стабілізація та соматична заземленість (4 години)</button>
             <div class="accordion-content">
+                
                 <div class="session-block">
                     <div class="session-title">Сесія 1.1. Фізіологія стресу та повернення в тіло</div>
-                    <p>Психопросвіта щодо впливу пролонгованого дистресу на нервову систему.</p>
-                    <p><strong>Практична вправа:</strong> «Соматичний якір» (навчання техніці дихання за квадратом 4-4-4-4 у поєднанні з прогресивною м'язовою релаксацією за Якобсоном).</p>
+                    <p><strong>Психопросвітній блок:</strong> Ознайомтеся з матеріалами щодо впливу пролонгованого дистресу на нервову систему та фаз вигорання за посиланням нижче:</p>
+                    <a href="https://www.samopomi.ch/psikhichne-zdorovja/stres-ta-emociine-vigorannja" target="_blank" class="link-button">Читати статтю: Психічне здоров'я, стрес та емоційне вигорання (samopomi.ch) &rarr;</a>
+
+                    <div class="exercise-box">
+                        <div class="exercise-title">Практична вправа: «Соматичний якір» (Дихання за квадратом 4-4-4-4 та релаксація за Якобсоном)</div>
+                        <p><strong>Інструкція до виконання:</strong></p>
+                        <ol>
+                            <li>Знайдіть зручне положення, поставте стопи на підлогу.</li>
+                            <li>Виконайте дихання: Вдих (4 сек) - Затримка (4 сек) - Видих (4 сек) - Затримка (4 сек). Повторіть 4-5 циклів.</li>
+                            <li>Послідовно напружуйте на 5 секунд та різко розслабляйте м'язи стоп, кистей рук, плечей та обличчя.</li>
+                        </ol>
+
+                        <div class="media-container">
+                            <p style="font-size: 0.9rem; color: #555; margin-bottom: 8px;">Відеоінструкція: Дихання за квадратом 4-4-4-4</p>
+                            <iframe src="https://www.youtube.com/embed/gL2A1vTfpt4" title="Square Breathing" allowfullscreen></iframe>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="session-block">
                     <div class="session-title">Сесія 1.2. Картографія емоційних тригерів та сенсорне заземлення</div>
-                    <p><strong>Практична вправа:</strong> «Мультисенсорний фокус 5-4-3-2-1» (переключення уваги на зовнішні сенсорні канали).</p>
-                    <p><strong>Вправа:</strong> «Карта безпечного простору» (візуалізація особистого емоційного укриття).</p>
+                    
+                    <div class="exercise-box">
+                        <div class="exercise-title">Практична вправа: «Мультисенсорний фокус 5-4-3-2-1»</div>
+                        <p>Озирніться довкола та послідовно знайдіть у кімнаті:</p>
+                        <ul>
+                            <li><strong>5 предметів</strong>, які ви бачите;</li>
+                            <li><strong>4 речі</strong>, які ви можете торкнутися фізично;</li>
+                            <li><strong>3 звуки</strong>, які ви чуєте прямо зараз;</li>
+                            <li><strong>2 запахи</strong>, які ви відчуваєте;</li>
+                            <li><strong>1 смак</strong>, який є у роті (або зробіть ковток води).</li>
+                        </ul>
+
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Сенсорне заземлення">
+                        </div>
+                    </div>
+
+                    <div class="exercise-box">
+                        <div class="exercise-title">Вправа: «Карта безпечного простору»</div>
+                        <p>Заплющте очі та детально уявіть місце, де ви почуваєтеся у цілковитій безпеці (реальне або вигадане). Запишіть у зошит 3 головні деталі цього простору (колір, звук, відчуття в тілі).</p>
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -264,16 +353,43 @@
         <div class="accordion-item">
             <button class="accordion-header">Модуль 2. Актуалізація внутрішнього суб'єктного ресурсу (4 години)</button>
             <div class="accordion-content">
+                
                 <div class="session-block">
                     <div class="session-title">Сесія 2.1. Діагностика та ревізія особистісного потенціалу</div>
                     <p>Опора на власні сили як базова детермінанта резильєнтності.</p>
-                    <p><strong>Арттерапевтична вправа:</strong> «Дерево моїх ресурсів» (графічне моделювання власного життєвого досвіду, сильних сторін та потенціалу).</p>
+
+                    <div class="exercise-box">
+                        <div class="exercise-title">Арттерапевтична вправа: «Дерево моїх ресурсів»</div>
+                        <p>Візьміть аркуш паперу та олівець. Намалюйте дерево, де:</p>
+                        <ul>
+                            <li><strong>Коріння:</strong> ваші минулі перемоги, досягнення та цінності.</li>
+                            <li><strong>Стовбур:</strong> ваші сильні сторони, риси характеру та навички.</li>
+                            <li><strong>Гілки та листя:</strong> ваші плани, мрії та теперішні ресурси підтримки.</li>
+                        </ul>
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" alt="Ресурсне дерево">
+                        </div>
+                    </div>
                 </div>
+
                 <div class="session-block">
                     <div class="session-title">Сесія 2.2. Інструменталізація моделі BASIC Ph</div>
-                    <p><strong>Практична вправа:</strong> «Шестиканальний профіль відновлення» (оцінка ресурсів за 6 каналами адаптації).</p>
-                    <p>Розробка індивідуальної скриньки ресурсної самодопомоги.</p>
+
+                    <div class="exercise-box">
+                        <div class="exercise-title">Практична вправа: «Шестиканальний профіль відновлення BASIC Ph»</div>
+                        <p>Оцініть від 1 до 5 кожен канал адаптації, який ви використовуєте найчастіше:</p>
+                        <ol>
+                            <li><strong>B (Belief):</strong> віра, цінності, філософія життя.</li>
+                            <li><strong>A (Affect):</strong> вираження емоцій, почуттів.</li>
+                            <li><strong>S (Social):</strong> спілкування, соціальні зв'язки, підтримка.</li>
+                            <li><strong>I (Imagination):</strong> творчість, уява, гумор.</li>
+                            <li><strong>C (Cognition):</strong> аналіз, збір інформації, планування.</li>
+                            <li><strong>Ph (Physiology):</strong> фізична активність, сон, харчування, розслаблення.</li>
+                        </ol>
+                        <p style="margin-top: 10px;"><strong>Завдання:</strong> Складіть «Скриньку ресурсної самодопомоги», додавши у свій план дій щонайменше 2 пункти з вашого провідного каналу.</p>
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -281,15 +397,42 @@
         <div class="accordion-item">
             <button class="accordion-header">Модуль 3. Трансформація кризи та розвиток резильєнтності (4 години)</button>
             <div class="accordion-content">
+                
                 <div class="session-block">
                     <div class="session-title">Сесія 3.1. Когнітивний рефреймінґ та подолання безпорадності</div>
-                    <p><strong>Техніка КПТ:</strong> Техніка когнітивно-поведінкової терапії для роботи з автоматичними думками «Переформулювання контексту».</p>
+
+                    <div class="exercise-box">
+                        <div class="exercise-title">Техніка КПТ: «Переформулювання контексту»</div>
+                        <p>Заповніть у зошиті 3 колонки для опрацювання автоматичних катастрофічних думок:</p>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                            <tr style="background-color: #f2f2f2;">
+                                <th style="border: 1px solid #ddd; padding: 8px;">Негативна думка</th>
+                                <th style="border: 1px solid #ddd; padding: 8px;">Факти "За" і "Проти"</th>
+                                <th style="border: 1px solid #ddd; padding: 8px;">Рефреймінг (Альтернатива)</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 8px;">«Я повністю втратив контроль над ситуацією»</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">Я не керую зовнішніми обставинами, але керую своїм графіком та діями.</td>
+                                <td style="border: 1px solid #ddd; padding: 8px;">«Я можу контролювати свій розпорядок дня та власні рішення тут і зараз»</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
+
                 <div class="session-block">
                     <div class="session-title">Сесія 3.2. Проєктування майбутнього в умовах неозначеності</div>
-                    <p><strong>Практична вправа:</strong> «Метод мікрокроків» (декомпозиція великих життєвих цілей на конкретні щоденні дії).</p>
-                    <p>Побудова картки короткострокових досягнень.</p>
+
+                    <div class="exercise-box">
+                        <div class="exercise-title">Практична вправа: «Метод мікрокроків»</div>
+                        <p>Оберіть одну складну мету чи задачу та розділіть її виконання за принципом мікрокроків:</p>
+                        <ul>
+                            <li><strong>Велика мета:</strong> Пройти повністю навчальну програму та відновити ресурс.</li>
+                            <li><strong>Мікрокрок 1:</strong> Виділити 15 хвилин увечері для виконання дихальної вправи.</li>
+                            <li><strong>Мікрокрок 2:</strong> Записати 3 досягнення за день у «Картку короткострокових досягнень».</li>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -297,14 +440,33 @@
         <div class="accordion-item">
             <button class="accordion-header">Модуль 4. Соціальна інтеграція та мережування (4 години)</button>
             <div class="accordion-content">
+                
                 <div class="session-block">
                     <div class="session-title">Сесія 4.1. Відновлення соціальної довіри та ненасильницьке спілкування</div>
-                    <p><strong>Практична вправа:</strong> «Діалог емпатії» (відпрацювання навичок активного слухання та висловлювання власних потреб через Я-повідомлення).</p>
+
+                    <div class="exercise-box">
+                        <div class="exercise-title">Практична вправа: «Діалог емпатії (Формула Я-повідомлення)»</div>
+                        <p>Замість звинувачення висловлюйте свої потреби за формулою:</p>
+                        <p style="background: #eef2f5; padding: 10px; border-radius: 4px; margin: 10px 0;">
+                            <strong>«Коли відбувається [Факт], я відчуваю [Емоція], тому що для мене важливо [Потреба]. Я прошу тебе [Прохання]»</strong>
+                        </p>
+                    </div>
                 </div>
+
                 <div class="session-block">
                     <div class="session-title">Сесія 4.2. Конструювання мережі взаємопідтримки</div>
-                    <p><strong>Вправа:</strong> «Павутиння ресурсного обміну» (побудова картографії взаємодопомоги та обміну ресурсами).</p>
+
+                    <div class="exercise-box">
+                        <div class="exercise-title">Вправа: «Павутиння ресурсного обміну»</div>
+                        <p>Намалюйте коло з вашим ім'ям у центрі та зкресліть лінії до людей з вашого оточення:</p>
+                        <ul>
+                            <li>Кому ви можете зателефонувати у разі потреби в емоційній підтримці?</li>
+                            <li>Хто може звернутися по допомогу до вас?</li>
+                            <li>Які спільноти або групи надають вам наснагу?</li>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -339,7 +501,7 @@
            rel="noopener noreferrer" 
            class="btn" 
            style="background-color: #2980b9; font-size: 1.05rem;">
-            Прайті підсумкове опитування (Google Forms) &rarr;
+            Пройти підсумкове опитування (Google Forms) &rarr;
         </a>
     </section>
 
@@ -350,7 +512,7 @@
 </footer>
 
 <script>
-    // Скрипт відкриття/закриття модулів
+    // Скрипт розгортання модулів
     const acc = document.getElementsByClassName("accordion-header");
     for (let i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function() {
@@ -363,12 +525,12 @@
             } else {
                 panel.style.paddingTop = "10px";
                 panel.style.paddingBottom = "15px";
-                panel.style.maxHeight = panel.scrollHeight + 30 + "px";
+                panel.style.maxHeight = panel.scrollHeight + 500 + "px";
             }
         });
     }
 
-    // Скрипт опитування
+    // Скрипт тестів
     function submitQuiz() {
         var options = document.getElementsByName('q1');
         var selected = false;
