@@ -207,7 +207,8 @@
 
         .media-container img {
             max-width: 100%;
-            height: auto;
+            height: 280px;
+            object-fit: cover;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
@@ -367,6 +368,10 @@
         
         <p><strong>Мета програми:</strong> актуалізація та розширення внутрішнього суб'єктного ресурсу, формування навичок емоційної саморегуляції, розвиток адаптивних копінг-стратегій та резильєнтності в умовах пролонгованого екстремального стресу.</p>
         
+        <div class="media-container">
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1000&q=80" alt="Психологічна гармонія">
+        </div>
+
         <br>
         <p><strong>Завдання програми:</strong></p>
 
@@ -414,7 +419,7 @@
                 <label class="quiz-option"><input type="radio" name="q1" value="3"> Достатньо швидко знаходжу внутрішні ресурси та адаптуюся</label>
                 
                 <div class="quiz-nav-btns">
-                    <div></div> <!-- Пустий блок для вирівнювання -->
+                    <div></div>
                     <button type="button" class="btn" onclick="nextStep(2)">Далі &rarr;</button>
                 </div>
             </div>
@@ -466,7 +471,6 @@
                     <p><strong>Психопросвітній блок:</strong> Пролонгований дистрес перевантажує симпатичну нервову систему, викликаючи хронічну напругу та емоційне виснаження. Детальніше про механізми вигорання читайте за посиланням:</p>
                     <a href="https://www.samopomi.ch/psikhichne-zdorovja/stres-ta-emociine-vigorannja" target="_blank" class="link-button">Читати матеріали: Психічне здоров'я, стрес та емоційне вигорання (samopomi.ch) &rarr;</a>
 
-                    <!-- Аудіогайд для вправи -->
                     <div class="audio-player-box">
                         <p>🎧 Аудіосупровід: Гайд для виконання дихання «За квадратом» (3 хвилини)</p>
                         <audio controls>
@@ -522,14 +526,13 @@
                         </ul>
 
                         <div class="media-container">
-                            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Сенсорне заземлення">
+                            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=80" alt="Сенсорне заземлення">
                         </div>
 
-                        <!-- Інтерактивний КПТ-щоденник -->
                         <div class="interactive-form">
                             <p><strong>📝 Інтерактивний щоденник тригерів:</strong></p>
                             <label style="font-size: 0.9rem;">Опишіть ситуацію за тиждень, яка викликала тривогу, та сенсорний канал, який включився першим:</label>
-                            <textarea id="trigger-note" placeholder="Наприклад: Сильний шум за вікном (слух) викликал прискорене серцебиття..."></textarea>
+                            <textarea id="trigger-note" placeholder="Наприклад: Сильний шум за вікном (слух) викликав прискорене серцебиття..."></textarea>
                             <button type="button" class="btn" style="padding: 6px 12px; font-size: 0.85rem;" onclick="saveNote('trigger-note')">Зберегти нотатку в пам'яті</button>
                         </div>
                     </div>
@@ -560,10 +563,9 @@
                         </ol>
 
                         <div class="media-container">
-                            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" alt="Ресурсне дерево">
+                            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=80" alt="Ресурсне дерево">
                         </div>
 
-                        <!-- Шаблон завантаження малюнка -->
                         <div class="upload-box">
                             <p>🎨 <strong>Завантаження арттерапевтичної роботи:</strong></p>
                             <p style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">Сфотографуйте ваше намальоване «Дерево ресурсів» та прикріпіть файл сюди для збереження у вашому особистому альманасі:</p>
@@ -581,6 +583,10 @@
                         <p><strong>Мета:</strong> Визначення індивідуальної комбінації каналів подолання стресу за методикою проф. Мулі Лаада.</p>
                         
                         <p style="margin-top: 10px;"><strong>Канали відновлення:</strong> B (Віра), A (Почуття), S (Соціальний), I (Уява), C (Когніція), Ph (Фізіологія).</p>
+
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1000&q=80" alt="Внутрішні ресурси">
+                        </div>
 
                         <div class="interactive-form">
                             <p><strong>🧰 Ваша скринька ресурсів:</strong></p>
@@ -601,23 +607,59 @@
                 <div class="session-block">
                     <div class="session-title">Сесія 3.1. Когнітивний рефреймінґ та подолання безпорадності</div>
 
+                    <div class="media-container">
+                        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=1000&q=80" alt="Трансформація думок">
+                    </div>
+
                     <div class="exercise-box">
-                        <div class="exercise-title">КПТ Протокол: Інтерактивний Щоденник Думок</div>
-                        <p><strong>Мета:</strong> Трансформація автоматичних тривожних думок у когнітивно обґрунтовану позицію.</p>
+                        <div class="exercise-title">КПТ Протокол: Інтерактивний Щоденник Думок та Когнітивна Реструктуризація</div>
+                        
+                        <p><strong>Терапевтична мета:</strong> Усвідомлення та трансформація автоматичних катастрофічних думок, які провокують стан емоційного тупика та безпорадності. Вправа навчає розділяти реальні факти від тривожних інтерпретацій вашого мозку.</p>
+
+                        <p style="margin-top: 12px;"><strong>Психологічний механізм вправи (3 кроки):</strong></p>
+                        <ol style="margin-bottom: 15px;">
+                            <li><strong>Крок 1. Фіксація автоматичної думки:</strong> Коли ви відчуваєте різкий сплеск тривоги, зупиніться і дайте відповідь на запитання: <em>«Що саме промайнуло в моїй голові секунду тому?»</em>. Зазвичай це категоричні судження зі словами "ніколи", "все", "нічого", "безвихідно".</li>
+                            <li><strong>Крок 2. Пошук реальних фактів (Спростування):</strong> Запитайте себе, як адвокат на суді: <em>«Які є об'єктивні докази того, що ця думка вірна на 100%? А які є докази проти неї?»</em>. Запишіть конкретні факти та ваші минулі досягнення, які заперечують найгірший сценарій.</li>
+                            <li><strong>Крок 3. Формування адаптивної відповіді (Рефреймінг):</strong> Сформулюйте нове, реалістичне та підтримуюче твердження. Воно не має бути фальшивим оптимізмом, воно має бути <strong>раціональною опорою</strong>.</li>
+                        </ol>
 
                         <div class="interactive-form" style="background: #ffffff; border: 1px solid #ced6e0;">
-                            <p><strong>✍️ Заповніть форму рефреймінгу:</strong></p>
+                            <p><strong>✍️ Заповніть свій КПТ-щоденник прямо зараз:</strong></p>
                             
-                            <label style="font-size: 0.85rem; font-weight: bold;">1. Автоматична тривожна думка:</label>
-                            <textarea id="cbt-1" placeholder="Наприклад: Я ні з чим не справляюся..."></textarea>
+                            <label style="font-size: 0.85rem; font-weight: bold; color: #2c3e50;">1. Автоматична тривожна думка (Що лякає?):</label>
+                            <textarea id="cbt-1" placeholder="Приклад: «Я ні з чим не справляюся, все виходить із-під контролю»"></textarea>
 
-                            <label style="font-size: 0.85rem; font-weight: bold;">2. Докази ПРОТИ цієї думки (факти):</label>
-                            <textarea id="cbt-2" placeholder="Наприклад: Але сьогодні я зробив(ла) розклад і вирішив(ла) 2 питання..."></textarea>
+                            <label style="font-size: 0.85rem; font-weight: bold; color: #2c3e50;">2. Докази ПРОТИ цієї думки (Реальні факти з життя):</label>
+                            <textarea id="cbt-2" placeholder="Приклад: «Я вчора самостійно закрив(ла) 2 важливі завдання. Я маю досвід виходу з подібних ситуацій»"></textarea>
 
-                            <label style="font-size: 0.85rem; font-weight: bold;">3. Адаптивна підтримка (переформульована думка):</label>
-                            <textarea id="cbt-3" placeholder="Наприклад: Мені важко, але я поступово вирішую питання..."></textarea>
+                            <label style="font-size: 0.85rem; font-weight: bold; color: #2c3e50;">3. Адаптивна підтримка (Нове реалістичне переконання):</label>
+                            <textarea id="cbt-3" placeholder="Приклад: «Мені зараз складно і я маю право на втому, але я вирішую питання поступово, крок за кроком»"></textarea>
 
                             <button type="button" class="btn" style="padding: 8px 16px; margin-top: 5px;" onclick="saveCBT()">Зберегти запис у КПТ-щоденник</button>
+                        </div>
+
+                        <div class="reflection-block">
+                            <strong>Рекомендація психолога:</strong> Перечитуйте створену адаптивну думку (Крок 3) щоразу, коли відчуваєте напад тривоги, щоб перепідключити нейронні зв'язки з реакції паніки на раціональну дію.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-block">
+                    <div class="session-title">Сесія 3.2. Проєктування майбутнього в умовах неозначеності</div>
+
+                    <div class="exercise-box">
+                        <div class="exercise-title">Практичний протокол: «Метод мікрокроків та Картка короткострокових досягнень»</div>
+                        <p><strong>Мета:</strong> Подолання стану синдрому відкладеного життя та синдрому набутої безпорадності через дрібнодисперсне планування.</p>
+                        
+                        <p style="margin-top: 10px;"><strong>Алгоритм виконання:</strong></p>
+                        <ol>
+                            <li><strong>Оберіть масштабну ціль</strong>, яка викликає страх або відчуття блокування.</li>
+                            <li><strong>Декомпозиція:</strong> Розбийте цю ціль на 4 найдрібніші дії, виконання кожної з яких займає не більше 10-15 хвилин.</li>
+                            <li><strong>Фіксація досягнень:</strong> Заведіть картку досягнень і щовечора записуйте рівно 3 виконані мікрокроки за день.</li>
+                        </ol>
+
+                        <div class="reflection-block">
+                            <strong>Приклад:</strong> Замість «Повністю відновити ментальне здоров'я» мікрокрок 1 буде: «Зробити вправу на дихання протягом 3 хвилин під час перерви».
                         </div>
                     </div>
                 </div>
@@ -633,14 +675,57 @@
                 <div class="session-block">
                     <div class="session-title">Сесія 4.1. Відновлення соціальної довіри та ненасильницьке спілкування</div>
 
+                    <div class="media-container">
+                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80" alt="Соціальна підтримка">
+                    </div>
+
                     <div class="exercise-box">
                         <div class="exercise-title">Практичний протокол: «Діалог емпатії (Алгоритм Я-повідомлення)»</div>
-                        <p><strong>Конструкція з 4 елементів:</strong> Факти без оцінки &rarr; Власні почуття &rarr; Потреба &rarr; Прохання.</p>
+                        
+                        <p><strong>Терапевтична мета:</strong> Навчитися висловлювати своє незадоволення, біль чи втому у стосунках без звинувачень, оцінок та конфліктів. Метод розроблений на засадах Ненасильницького спілкування (NVC) Маршалла Розенберга і дозволяє зберегти близькість та захистити власні кордони.</p>
+
+                        <p style="margin-top: 12px;"><strong>Структура побудови фрази (4 обов'язкові компоненти):</strong></p>
+                        <ol style="margin-bottom: 15px;">
+                            <li><strong>1. Факти без оцінки (Конкретна дія):</strong> Опишіть об'єктивну ситуацію як відеокамера. Уникайте слів "ти завжди", "ти ніколи", "як звичайно". <br><em>(Приклад: «Коли ти не відповідаєш на мої дзвінки протягом дня...»)</em></li>
+                            <li><strong>2. Власні почуття (Емоційна реакція):</strong> Скажіть про свої емоції від першої особи. <br><em>(Приклад: «...я відчуваю сильну тривогу та самотність...»)</em></li>
+                            <li><strong>3. Ваша глибинна потреба (Чому це важливо):</strong> Озвучте цінність, яка стоїть за цим почуттям. <br><em>(Приклад: «...тому що для мене важлива безпека, передбачуваність та наш зв'язок...»)</em></li>
+                            <li><strong>4. Чітке прохання (Конкретна дія на майбутнє):</strong> Попросіть про зрозумілу дію в позитивному ключі (що ДОЗВОЛИТЬ зробити, а не чого НЕ РОБИТИ). <br><em>(Приклад: «...будь ласка, напиши мені коротке повідомлення, якщо затримуєшся»).</em></li>
+                        </ol>
 
                         <div class="interactive-form">
-                            <p><strong>💬 Тренажер Я-повідомлень:</strong></p>
-                            <textarea id="message-note" placeholder="Переформулюйте претензію у Я-повідомлення за шаблоном..."></textarea>
-                            <button type="button" class="btn" style="padding: 6px 12px; font-size: 0.85rem;" onclick="saveNote('message-note')">Зберегти чернетку</button>
+                            <p><strong>💬 Інтерактивний тренажер Я-повідомлень:</strong></p>
+                            <label style="font-size: 0.85rem; color: #555;">Оберіть ситуацію, яка викликає роздратування (наприклад, претензію «Ти мене зовсім не слухаєш!»), та перетворіть її на конструктивну форму за 4 кроками:</label>
+                            <textarea id="message-note" placeholder="Введіть ваше Я-повідомлення за формулою: 1. Коли ти... 2. Я відчуваю... 3. Тому що мені важливо... 4. Будь ласка..."></textarea>
+                            <button type="button" class="btn" style="padding: 6px 12px; font-size: 0.85rem;" onclick="saveNote('message-note')">Зберегти чернетку діалогу</button>
+                        </div>
+
+                        <div class="reflection-block">
+                            <strong>Практична порада:</strong> Потренуйтеся виголосити це повідомлення вголос перед дзеркалом із спокійною інтонацією перед тим, як говорити з близькою людиною.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-block">
+                    <div class="session-title">Сесія 4.2. Конструювання мережі взаємопідтримки</div>
+
+                    <div class="media-container">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=80" alt="Мережа підтримки">
+                    </div>
+
+                    <div class="exercise-box">
+                        <div class="exercise-title">Практичний протокол: Вправа «Павутиння ресурсного обміну»</div>
+                        <p><strong>Мета:</strong> Картографування соціального капіталу та виявлення прихованих мереж підтримки.</p>
+                        
+                        <p style="margin-top: 10px;"><strong>Схема побудови:</strong></p>
+                        <p>На аркуші паперу намалюйте коло із власним ім'ям у центрі. Наколо зобразіть 3 орбіти:</p>
+                        <ul>
+                            <li><strong>Близька орбіта (Близькі люди):</strong> Кому ви можете зателефонувати у разі гострої потреби навіть вночі?</li>
+                            <li><strong>Середня орбіта (Колеги, знайомі, фахівці):</strong> Хто може допомогти експертно, інформаційно чи побутово?</li>
+                            <li><strong>Зовнішня орбіта (Спільноти, волонтерські групи):</strong> До яких організацій чи груп за інтересами ви належите?</li>
+                        </ul>
+
+                        <div class="reflection-block">
+                            <strong>Аналіз обміну:</strong> Проведіть від себе стрілочки. Подивіться, де є баланс «віддаю - отримую», а де є дефіцит. Напишіть ім'я однієї людини, з якою ви відновите контакт цього тижня.
                         </div>
                     </div>
                 </div>
@@ -686,7 +771,7 @@
             } else {
                 panel.style.paddingTop = "10px";
                 panel.style.paddingBottom = "20px";
-                panel.style.maxHeight = panel.scrollHeight + 1500 + "px";
+                panel.style.maxHeight = panel.scrollHeight + 1800 + "px";
             }
         });
     }
